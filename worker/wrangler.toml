@@ -1,0 +1,25 @@
+ name = "cloudflare_temp_email"
+  main = "src/worker.ts"
+  compatibility_date = "2025-04-01"
+  compatibility_flags = [ "nodejs_compat" ]
+  keep_vars = true
+
+  # 定时清理 - 每天凌晨执行
+  [triggers]
+  crons = [ "0 0 * * *" ]
+
+  [vars]
+  TITLE = "临时邮箱"
+  PREFIX = "tmp"
+  DEFAULT_DOMAINS = ["mzzz1231.icu"]
+  DOMAINS = ["mzzz1231.icu"]
+  JWT_SECRET = "d39f3261515d8380429b0695b470a27d99a17eee5761cb408dbcce4e28c4f39e"
+  BLACK_LIST = ""
+  ENABLE_USER_CREATE_EMAIL = true
+  ENABLE_USER_DELETE_EMAIL = true
+  ENABLE_AUTO_REPLY = false
+
+  [[d1_databases]]
+  binding = "DB"
+  database_name = "temp-email-db"
+  database_id = "c26efbb5-7250-4d9b-ad7e-239268d947ee"
