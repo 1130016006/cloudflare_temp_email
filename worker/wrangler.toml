@@ -18,7 +18,8 @@
   ENABLE_USER_CREATE_EMAIL = true
   ENABLE_USER_DELETE_EMAIL = true
   ENABLE_AUTO_REPLY = false
-
+  DISABLE_ADMIN_PASSWORD_CHECK = true
+  
   [[d1_databases]]
   binding = "DB"
   database_name = "temp-email-db"
