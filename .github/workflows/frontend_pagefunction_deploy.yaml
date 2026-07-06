@@ -7,28 +7,28 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+       - name: Checkout
+         uses: actions/checkout@v6
 
-      - name: Install Node.js
-        uses: actions/setup-node@v6
-        with:
+       - name: Install Node.js
+         uses: actions/setup-node@v6
+         with:
           node-version: 24
 
-      - uses: pnpm/action-setup@v5
-        name: Install pnpm
-        with:
+       - uses: pnpm/action-setup@v5
+         name: Install pnpm
+         with:
             version: 10
             run_install: false
 
-      - name: Deploy Frontend
-        run: |
-        cd frontend/
-            pnpm install --no-frozen-lockfile
-            pnpm build:pages
-            cd ../pages/
-            pnpm install --no-frozen-lockfile
-            pnpm run deploy
-          env:
+       - name: Deploy Frontend
+         run: |
+           cd frontend/
+           pnpm install --no-frozen-lockfile
+           pnpm build:pages
+           cd ../pages/
+           pnpm install --no-frozen-lockfile
+           pnpm run deploy
+         env:
             CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
             CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
