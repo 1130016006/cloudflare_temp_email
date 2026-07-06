@@ -1,4 +1,4 @@
- name: Deploy Frontend with page function
+name: Deploy Frontend with page function
 
   on:
     workflow_dispatch:
