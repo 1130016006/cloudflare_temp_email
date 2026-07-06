@@ -1,29 +1,29 @@
 name: Deploy Frontend with page function
 
-  on:
-    workflow_dispatch:
+on:
+  workflow_dispatch:
 
-  jobs:
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v6
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-        - name: Install Node.js
-          uses: actions/setup-node@v6
-          with:
-            node-version: 24
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
 
-        - uses: pnpm/action-setup@v5
-          name: Install pnpm
-          with:
+      - uses: pnpm/action-setup@v5
+        name: Install pnpm
+        with:
             version: 10
             run_install: false
 
-        - name: Deploy Frontend
-          run: |
-            cd frontend/
+      - name: Deploy Frontend
+        run: |
+        cd frontend/
             pnpm install --no-frozen-lockfile
             pnpm build:pages
             cd ../pages/
